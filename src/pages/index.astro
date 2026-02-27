@@ -1,9 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import AnnouncementCard from '../components/AnnouncementCard.astro';
-import announcements from '../content/announcements.json';
+import announcementsData from '../content/announcements.json';
 
-const recentAnnouncements = announcements.slice(0, 3);
+const recentAnnouncements = announcementsData.items.slice(0, 3);
 ---
 
 <Layout>

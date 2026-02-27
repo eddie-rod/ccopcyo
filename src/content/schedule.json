@@ -1,6 +1,7 @@
-[
-  {
-    "date": "Sun, Mar 1, 2026",
+{
+  "games": [
+    {
+      "date": "Sun, Mar 1, 2026",
     "time": "10:00am",
     "grade": "4th Grade",
     "opponent": "St. Raymond's",
@@ -46,5 +47,6 @@
     "opponent": "All Saints",
     "location": "Pleasanton Middle School",
     "result": "L 20-24"
-  }
-]
+    }
+  ]
+}

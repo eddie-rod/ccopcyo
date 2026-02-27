@@ -1,0 +1,61 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: "site-content"
+    label: "Site Content"
+    files:
+      - name: "announcements"
+        label: "Announcements"
+        file: "src/content/announcements.json"
+        format: "json"
+        fields:
+          - name: items
+            label: Announcements
+            label_singular: Announcement
+            widget: list
+            summary: "{{fields.date}} — {{fields.title}}"
+            fields:
+              - { name: date, label: Date, widget: string, hint: "e.g. Feb 10, 2026" }
+              - { name: title, label: Title, widget: string }
+              - { name: body, label: Body, widget: text }
+              - { name: tag, label: Tag, widget: string, hint: "e.g. Registration, Schedule, Referees" }
+              - name: stripe
+                label: Card Accent Color
+                widget: select
+                options:
+                  - { label: "Orange", value: "orange" }
+                  - { label: "Gray", value: "gray" }
+                  - { label: "Navy", value: "navy" }
+                default: "orange"
+
+      - name: "schedule"
+        label: "Game Schedule"
+        file: "src/content/schedule.json"
+        format: "json"
+        fields:
+          - name: games
+            label: Games
+            label_singular: Game
+            widget: list
+            summary: "{{fields.date}} {{fields.time}} — {{fields.grade}} vs {{fields.opponent}}"
+            fields:
+              - { name: date, label: Date, widget: string, hint: "e.g. Sun, Mar 1, 2026" }
+              - { name: time, label: Time, widget: string, hint: "e.g. 10:00am" }
+              - name: grade
+                label: Grade
+                widget: select
+                options:
+                  - "3rd Grade"
+                  - "4th Grade"
+                  - "5th Grade"
+                  - "6th Grade"
+                  - "7th Grade"
+                  - "8th Grade"
+              - { name: opponent, label: Opponent, widget: string }
+              - { name: location, label: Location, widget: string, hint: "e.g. St. Elizabeth's Gym" }
+              - { name: result, label: Result, widget: string, required: false, hint: "e.g. W 24-18 or L 20-24 (leave blank for upcoming games)" }
