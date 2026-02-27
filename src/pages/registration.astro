@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Register | CCOP CYO Basketball">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="section-label">Join the Team</div>
+      <h1 class="page-title">Register for the<br/><span style="color: var(--orange);">2025–26 Season</span></h1>
+    </div>
+  </div>
+
+  <section class="registration-section">
+    <div class="section-inner">
+      <div class="reg-layout">
+        <div class="reg-info fade-in">
+          <div class="section-label">Program Details</div>
+          <div class="section-title">What to Expect</div>
+          <p>Open to boys and girls in <strong>grades 3–8</strong> living in Pleasanton or Sunol. No prior experience needed — players of all skill levels are welcome!</p>
+          <div class="fee-badge">
+            Early Bird: <strong>$350</strong> &nbsp;|&nbsp; Regular: <strong>$375</strong>
+          </div>
+          <div class="reg-details">
+            <div class="reg-detail-row">
+              <div class="detail-icon">📅</div>
+              <div>
+                <div class="detail-label">Key Dates</div>
+                <div class="detail-value">Evaluations: mid-September · Practices: October · Games: Late Oct – mid-Feb</div>
+              </div>
+            </div>
+            <div class="reg-detail-row">
+              <div class="detail-icon">🏀</div>
+              <div>
+                <div class="detail-label">Practice & Games</div>
+                <div class="detail-value">2 practices/week · Games on Sunday afternoons throughout the Tri-Valley area</div>
+              </div>
+            </div>
+            <div class="reg-detail-row">
+              <div class="detail-icon">📍</div>
+              <div>
+                <div class="detail-label">Locations</div>
+                <div class="detail-value">St. Elizabeth's Gym + Pleasanton middle school gyms · Pleasanton, Danville, Dublin, San Ramon, Livermore</div>
+              </div>
+            </div>
+            <div class="reg-detail-row">
+              <div class="detail-icon">⛪</div>
+              <div>
+                <div class="detail-label">Open to All</div>
+                <div class="detail-value">All faiths and beliefs welcome — no Catholic affiliation required</div>
+              </div>
+            </div>
+            <div class="reg-detail-row">
+              <div class="detail-icon">👕</div>
+              <div>
+                <div class="detail-label">What's Included</div>
+                <div class="detail-value">Jersey, shorts, and socks provided · Bring your own basketball shoes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reg-form-card fade-in">
+          <h3>Interest Form</h3>
+          <p>Fill this out and we'll follow up with full registration details and payment info.</p>
+          <form name="interest" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="interest" />
+            <p class="hidden-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="parent-first">Parent First Name</label>
+                <input type="text" id="parent-first" name="parent-first" placeholder="Jane" required />
+              </div>
+              <div class="form-field">
+                <label for="parent-last">Parent Last Name</label>
+                <input type="text" id="parent-last" name="parent-last" placeholder="Smith" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="jane@email.com" required />
+              </div>
+              <div class="form-field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="(925) 555-0100" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="player-name">Player's Name</label>
+                <input type="text" id="player-name" name="player-name" placeholder="Alex Smith" required />
+              </div>
+              <div class="form-field">
+                <label for="grade">Current Grade</label>
+                <select id="grade" name="grade" required>
+                  <option value="">Select grade</option>
+                  <option>3rd Grade</option>
+                  <option>4th Grade</option>
+                  <option>5th Grade</option>
+                  <option>6th Grade</option>
+                  <option>7th Grade</option>
+                  <option>8th Grade</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field full">
+                <label for="questions">Questions or Comments</label>
+                <textarea id="questions" name="questions" placeholder="Any questions for the league coordinator..."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="form-submit">Submit Interest →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

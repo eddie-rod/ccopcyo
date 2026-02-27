@@ -1,0 +1,13 @@
+---
+const { date, title, body, tag, stripe = 'orange' } = Astro.props;
+---
+
+<div class="announcement-card fade-in">
+  <div class={`card-stripe ${stripe !== 'orange' ? stripe : ''}`}></div>
+  <div class="card-body">
+    <div class="card-date">{date}</div>
+    <div class="card-title">{title}</div>
+    <p class="card-text">{body}</p>
+    <span class="card-tag">{tag}</span>
+  </div>
+</div>

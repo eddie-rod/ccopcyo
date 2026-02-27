@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import schedule from '../content/schedule.json';
+---
+
+<Layout title="Schedule | CCOP CYO Basketball">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="section-label">2025–26 Season</div>
+      <h1 class="page-title">Game Schedule</h1>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-inner">
+      <p class="schedule-note fade-in">Games are played on Sunday afternoons throughout the Tri-Valley area. Check with your coach for practice schedules and any last-minute gym changes.</p>
+
+      {schedule.length > 0 ? (
+        <div class="schedule-list">
+          {schedule.map((game) => (
+            <div class="schedule-row fade-in">
+              <div class="schedule-date">
+                <div class="sched-date-main">{game.date}</div>
+                <div class="sched-time">{game.time}</div>
+              </div>
+              <div class="schedule-grade">{game.grade}</div>
+              <div class="schedule-opponent">
+                <div class="sched-label">vs.</div>
+                <div class="sched-team">{game.opponent}</div>
+              </div>
+              <div class="schedule-location">
+                <span class="sched-icon">📍</span>
+                <span class="sched-loc">{game.location}</span>
+              </div>
+              {game.result && (
+                <div class={`schedule-result ${game.result.startsWith('W') ? 'win' : 'loss'}`}>
+                  {game.result}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="schedule-empty fade-in">
+          <p>No games scheduled yet. Check back soon or contact your coach for updates.</p>
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .schedule-note {
+    color: var(--gray-mid);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    padding: 1rem 1.5rem;
+    border-left: 3px solid var(--orange);
+    background: rgba(232, 232, 228, 0.04);
+    border-radius: 0 6px 6px 0;
+  }
+  .schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 160px 110px 1fr 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    background: rgba(232, 232, 228, 0.05);
+    border-left: 3px solid var(--orange);
+    border-radius: 6px;
+    padding: 1rem 1.5rem;
+    transition: background 0.2s;
+  }
+  .schedule-row:hover { background: rgba(232, 232, 228, 0.08); }
+  .sched-date-main {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .sched-time {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--orange);
+    margin-top: 0.2rem;
+  }
+  .schedule-grade {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    background: rgba(217,95,14,0.15);
+    border: 1px solid rgba(217,95,14,0.35);
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .sched-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 0.15rem;
+  }
+  .sched-team {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .schedule-location {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .sched-icon { font-size: 0.85rem; flex-shrink: 0; }
+  .sched-loc { font-size: 0.88rem; color: var(--gray-light); line-height: 1.4; }
+  .schedule-result {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .schedule-result.win { background: rgba(34,197,94,0.15); color: #4ade80; }
+  .schedule-result.loss { background: rgba(239,68,68,0.15); color: #f87171; }
+  .schedule-empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--gray-mid);
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .schedule-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+    .schedule-date { grid-column: 1 / 2; }
+    .schedule-grade { grid-column: 2 / 3; justify-self: end; }
+    .schedule-opponent { grid-column: 1 / -1; }
+    .schedule-location { grid-column: 1 / -1; }
+    .schedule-result { grid-column: 1 / -1; width: fit-content; }
+  }
+</style>

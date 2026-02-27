@@ -1,0 +1,23 @@
+[
+  {
+    "date": "Feb 10, 2026",
+    "title": "Registration Now Open for 2025–26 Season!",
+    "body": "Early bird pricing of $350 is available through July 15. Regular registration is $375. Sibling discounts apply. Sign up today to secure your spot — spots fill fast!",
+    "tag": "Registration",
+    "stripe": "orange"
+  },
+  {
+    "date": "Jan 28, 2026",
+    "title": "Referee Program Openings — HS Students Apply Now",
+    "body": "9th–12th graders can earn a cash stipend officiating Sunday games. CCOP alumni and Pleasanton residents get priority. Apply via the contact page before spots fill.",
+    "tag": "Referees",
+    "stripe": "gray"
+  },
+  {
+    "date": "Jan 15, 2026",
+    "title": "Season Schedule: Games Resume Jan 19",
+    "body": "Games are back in action after the holiday break! Sunday afternoon matchups run through mid-February. Check with your coach for your team's specific schedule and gym location.",
+    "tag": "Schedule",
+    "stripe": "navy"
+  }
+]

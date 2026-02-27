@@ -1,0 +1,50 @@
+[
+  {
+    "date": "Sun, Mar 1, 2026",
+    "time": "10:00am",
+    "grade": "4th Grade",
+    "opponent": "St. Raymond's",
+    "location": "St. Elizabeth's Gym",
+    "result": null
+  },
+  {
+    "date": "Sun, Mar 1, 2026",
+    "time": "11:30am",
+    "grade": "5th Grade",
+    "opponent": "St. Philip Neri",
+    "location": "Pleasanton Middle School",
+    "result": null
+  },
+  {
+    "date": "Sun, Mar 8, 2026",
+    "time": "10:00am",
+    "grade": "6th Grade",
+    "opponent": "St. Isidore",
+    "location": "Wells Middle School",
+    "result": null
+  },
+  {
+    "date": "Sun, Mar 8, 2026",
+    "time": "1:00pm",
+    "grade": "7th Grade",
+    "opponent": "St. Augustine",
+    "location": "Harvest Park Middle School",
+    "result": null
+  },
+  {
+    "date": "Sun, Feb 22, 2026",
+    "time": "10:00am",
+    "grade": "3rd Grade",
+    "opponent": "St. Michael's",
+    "location": "St. Elizabeth's Gym",
+    "result": "W 18-12"
+  },
+  {
+    "date": "Sun, Feb 22, 2026",
+    "time": "11:30am",
+    "grade": "8th Grade",
+    "opponent": "All Saints",
+    "location": "Pleasanton Middle School",
+    "result": "L 20-24"
+  }
+]
