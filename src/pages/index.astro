@@ -7,7 +7,6 @@ import regData from '../content/registration.json';
   <!-- HERO -->
   <section class="hero">
     <div class="hero-court"></div>
-    <div class="hero-tag">Pleasanton, CA · Tri-Valley CYO League</div>
     <h1>
       Play<br/>
       <span class="accent">Hard.</span><br/>
@@ -17,10 +16,6 @@ import regData from '../content/registration.json';
     <p class="hero-sub">
       CCOP CYO Basketball — where kids in grades 3–8 learn the game, build character, and make lifelong memories. Everyone plays. Everyone improves. Everyone's welcome.
     </p>
-    <div class="hero-buttons">
-      <a href="/registration" class="btn-primary">Register for 2025–26</a>
-      <a href="/announcements" class="btn-secondary">League News</a>
-    </div>
     <div class="hero-stats">
       <div class="stat-item">
         <div class="stat-num">3rd–8th</div>
@@ -72,6 +67,18 @@ import regData from '../content/registration.json';
           <a href="/contact" class="btn-secondary reg-cta-btn">Have Questions? Contact Us</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- FAQ LINK -->
+  <section class="faq-link-section">
+    <div class="section-inner faq-link-inner fade-in">
+      <div>
+        <div class="section-label">Have Questions?</div>
+        <div class="section-title">Check Out Our FAQs</div>
+        <p class="faq-link-text">Find answers about eligibility, fees, practice schedules, uniforms, and more.</p>
+      </div>
+      <a href="/faqs" class="btn-primary">View FAQs →</a>
     </div>
   </section>
 
@@ -140,27 +147,51 @@ import regData from '../content/registration.json';
 
 <style>
   .reg-cta-card {
-    background: rgba(232, 232, 228, 0.05);
-    border: 1px solid rgba(232, 232, 228, 0.12);
-    border-top: 5px solid var(--orange);
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-top: 4px solid var(--orange);
     border-radius: 12px;
     padding: 2.5rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
   }
   .reg-cta-card h3 {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
     font-size: 1.8rem;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--navy);
   }
   .reg-cta-card p {
-    color: var(--gray-light);
+    color: var(--gray-mid);
     font-size: 0.95rem;
     line-height: 1.6;
   }
   .reg-cta-btn { width: 100%; text-align: center; }
+
+  .faq-link-section {
+    background: var(--white);
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .faq-link-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .faq-link-text {
+    color: var(--gray-mid);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 0.75rem;
+    max-width: 500px;
+  }
+
+  @media (max-width: 768px) {
+    .faq-link-inner { flex-direction: column; align-items: flex-start; }
+  }
 </style>

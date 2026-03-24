@@ -21,7 +21,10 @@ const pathname = Astro.url.pathname;
 
   <!-- NAV -->
   <nav>
-    <a class="nav-logo" href="/">CCOP <span>CYO BASKETBALL</span></a>
+    <a class="nav-logo" href="/">
+      <img src="/images/logo.png" alt="CCOP CYO Logo" class="nav-logo-img" />
+      <div class="nav-logo-text">CCOP <span>CYO Basketball</span></div>
+    </a>
     <button class="nav-toggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -40,9 +43,12 @@ const pathname = Astro.url.pathname;
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div class="footer-logo">
-        <span class="logo-orange">CCOP</span> CYO BASKETBALL
-        <span>Catholic Community of Pleasanton · Est. 1971</span>
+      <div class="footer-brand">
+        <img src="/images/logo.png" alt="CCOP CYO Logo" class="footer-logo-img" />
+        <div>
+          <div class="footer-logo-text"><span class="logo-orange">CCOP</span> CYO Basketball</div>
+          <span class="footer-sub">Catholic Community of Pleasanton · Est. 1971</span>
+        </div>
       </div>
       <ul class="footer-links">
         <li><a href="/announcements">News</a></li>
@@ -53,14 +59,12 @@ const pathname = Astro.url.pathname;
       </ul>
     </div>
     <div class="footer-bottom">
-      © 2026 CCOP CYO Basketball · Pleasanton, CA · Member of the Tri-Valley CYO League · Oakland Diocese
+      &copy; 2026 CCOP CYO Basketball · Pleasanton, CA · Member of the Tri-Valley CYO League · Oakland Diocese
     </div>
   </footer>
 
   <script is:inline>
     // Netlify Identity — redirect to /admin after login
-    // The widget auto-detects invite/recovery/confirmation tokens in the URL hash
-    // and opens the appropriate modal on its own — no manual open() needed.
     function initIdentity() {
       var identity = window.netlifyIdentity;
       if (!identity) return;
@@ -85,7 +89,6 @@ const pathname = Astro.url.pathname;
       toggle.classList.toggle('open');
       navLinks?.classList.toggle('open');
     });
-    // Close menu when a link is clicked
     navLinks?.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         toggle?.classList.remove('open');
@@ -110,24 +113,24 @@ const pathname = Astro.url.pathname;
 
 <style is:global>
   :root {
-    --navy: #0a1628;
-    --orange: #d95f0e;
-    --orange-light: #f07230;
-    --gray-dark: #4a4a4a;
-    --gray-mid: #7a7a7a;
-    --gray-light: #e8e8e4;
-    --gray-bg: #f2f1ee;
+    --navy: #1a2332;
+    --orange: #e07830;
+    --orange-light: #f08a42;
+    --orange-warm: #fff4eb;
+    --gray-dark: #3d3d3d;
+    --gray-mid: #6b6b6b;
+    --gray-light: #d4d4d4;
+    --gray-bg: #f7f6f3;
     --white: #ffffff;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  /* Ensure Netlify Identity widget iframe renders above all site elements */
   #netlify-identity-widget { z-index: 9999 !important; }
   html { scroll-behavior: smooth; }
   body {
     font-family: 'Barlow', sans-serif;
-    background: var(--navy);
-    color: var(--white);
+    background: var(--white);
+    color: var(--navy);
     overflow-x: hidden;
   }
 
@@ -140,28 +143,47 @@ const pathname = Astro.url.pathname;
     align-items: center;
     justify-content: space-between;
     padding: 0 2.5rem;
-    height: 64px;
-    background: rgba(10, 22, 40, 0.97);
-    backdrop-filter: blur(8px);
-    border-bottom: 3px solid var(--orange);
+    height: 72px;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
   }
   .nav-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 1.4rem;
-    letter-spacing: 0.04em;
-    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
     text-decoration: none;
   }
-  .nav-logo span { color: var(--orange); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-logo-img {
+    height: 44px;
+    width: auto;
+    border-radius: 4px;
+  }
+  .nav-logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    letter-spacing: 0.03em;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+  .nav-logo-text span {
+    display: block;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
   .nav-links a {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.95rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--gray-light);
+    color: var(--gray-dark);
     text-decoration: none;
     transition: color 0.2s;
   }
@@ -169,14 +191,15 @@ const pathname = Astro.url.pathname;
   .nav-cta {
     background: var(--orange) !important;
     color: var(--white) !important;
-    padding: 0.45rem 1.2rem;
-    border-radius: 4px;
+    padding: 0.5rem 1.3rem;
+    border-radius: 6px;
+    transition: background 0.2s, transform 0.15s;
   }
-  .nav-cta:hover { background: var(--orange-light) !important; }
+  .nav-cta:hover { background: var(--orange-light) !important; transform: translateY(-1px); }
 
   /* ─── HERO ─── */
   .hero {
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -184,22 +207,22 @@ const pathname = Astro.url.pathname;
     padding: 120px 2.5rem 4rem;
     position: relative;
     overflow: hidden;
-    background: var(--navy);
+    background: var(--white);
   }
   .hero::before {
     content: '';
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(217, 95, 14, 0.14) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(122, 122, 122, 0.06) 0%, transparent 55%);
+      radial-gradient(ellipse 50% 60% at 85% 50%, rgba(224, 120, 48, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 10% 80%, rgba(26, 35, 50, 0.03) 0%, transparent 55%);
   }
   .hero-court {
     position: absolute;
-    right: -60px; top: 50%;
+    right: -40px; top: 50%;
     transform: translateY(-50%);
-    width: 520px; height: 520px;
-    border: 3px solid rgba(217, 95, 14, 0.18);
+    width: 480px; height: 480px;
+    border: 2px solid rgba(224, 120, 48, 0.12);
     border-radius: 50%;
     pointer-events: none;
   }
@@ -207,15 +230,15 @@ const pathname = Astro.url.pathname;
     content: '';
     position: absolute;
     inset: 40px;
-    border: 2px solid rgba(217, 95, 14, 0.10);
+    border: 2px solid rgba(224, 120, 48, 0.07);
     border-radius: 50%;
   }
   .hero-court::after {
     content: '';
     position: absolute;
     top: 50%; left: -80px; right: -80px;
-    height: 3px;
-    background: rgba(217, 95, 14, 0.10);
+    height: 2px;
+    background: rgba(224, 120, 48, 0.07);
     transform: translateY(-50%);
   }
   .hero-tag {
@@ -243,7 +266,7 @@ const pathname = Astro.url.pathname;
     line-height: 0.92;
     letter-spacing: -0.01em;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--navy);
     position: relative;
     z-index: 1;
     max-width: 700px;
@@ -253,9 +276,9 @@ const pathname = Astro.url.pathname;
   .hero-sub {
     margin-top: 1.5rem;
     font-size: 1.1rem;
-    color: var(--gray-light);
+    color: var(--gray-mid);
     max-width: 480px;
-    line-height: 1.6;
+    line-height: 1.7;
     position: relative;
     z-index: 1;
   }
@@ -273,7 +296,7 @@ const pathname = Astro.url.pathname;
     gap: 3rem;
     position: relative;
     z-index: 1;
-    border-top: 1px solid rgba(232, 232, 228, 0.15);
+    border-top: 1px solid rgba(26, 35, 50, 0.1);
     padding-top: 2rem;
   }
   .stat-num {
@@ -301,14 +324,15 @@ const pathname = Astro.url.pathname;
     text-transform: uppercase;
     padding: 0.85rem 2.2rem;
     text-decoration: none;
-    border-radius: 4px;
-    transition: background 0.2s, transform 0.15s;
+    border-radius: 6px;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
     display: inline-block;
+    box-shadow: 0 2px 8px rgba(224, 120, 48, 0.25);
   }
-  .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+  .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(224, 120, 48, 0.3); }
   .btn-secondary {
-    border: 2px solid rgba(232, 232, 228, 0.35);
-    color: var(--white);
+    border: 2px solid var(--gray-light);
+    color: var(--navy);
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
     font-size: 1rem;
@@ -316,11 +340,11 @@ const pathname = Astro.url.pathname;
     text-transform: uppercase;
     padding: 0.85rem 2.2rem;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 6px;
     transition: border-color 0.2s, background 0.2s;
     display: inline-block;
   }
-  .btn-secondary:hover { border-color: var(--orange); background: rgba(217,95,14,0.08); }
+  .btn-secondary:hover { border-color: var(--orange); background: var(--orange-warm); color: var(--orange); }
 
   /* ─── SECTIONS ─── */
   section { padding: 6rem 2.5rem; }
@@ -337,7 +361,7 @@ const pathname = Astro.url.pathname;
     align-items: center;
     gap: 0.6rem;
   }
-  .section-label::before { content: '▶'; font-size: 0.6rem; }
+  .section-label::before { content: ''; width: 20px; height: 2px; background: var(--orange); display: inline-block; }
   .section-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
@@ -345,12 +369,12 @@ const pathname = Astro.url.pathname;
     text-transform: uppercase;
     line-height: 1;
     letter-spacing: -0.01em;
-    color: var(--white);
+    color: var(--navy);
   }
 
   /* ─── PAGE HEADER (inner pages) ─── */
   .page-header {
-    background: var(--navy);
+    background: var(--gray-bg);
     padding: 120px 2.5rem 4rem;
     border-bottom: 3px solid var(--orange);
     position: relative;
@@ -360,7 +384,7 @@ const pathname = Astro.url.pathname;
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(217, 95, 14, 0.08) 0%, transparent 60%);
+    background: radial-gradient(ellipse 50% 60% at 85% 50%, rgba(224, 120, 48, 0.05) 0%, transparent 60%);
   }
   .page-header-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
   .page-title {
@@ -368,15 +392,14 @@ const pathname = Astro.url.pathname;
     font-weight: 900;
     font-size: clamp(2.8rem, 7vw, 5.5rem);
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--navy);
     line-height: 0.95;
     letter-spacing: -0.01em;
     margin-top: 0.5rem;
   }
 
   /* ─── ANNOUNCEMENT CARDS ─── */
-  .announcements-section { background: var(--gray-bg); }
-  .announcements-section .section-label { color: var(--orange); }
+  .announcements-section { background: var(--white); }
   .announcements-section .section-title { color: var(--navy); }
   .announcements-grid {
     display: grid;
@@ -386,14 +409,15 @@ const pathname = Astro.url.pathname;
   }
   .announcement-card {
     background: var(--white);
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 24px rgba(10,22,40,0.07);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.06);
     transition: transform 0.2s, box-shadow 0.2s;
   }
-  .announcement-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(10,22,40,0.12); }
-  .card-stripe { height: 5px; background: var(--orange); }
-  .card-stripe.gray { background: var(--gray-dark); }
+  .announcement-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+  .card-stripe { height: 4px; background: var(--orange); }
+  .card-stripe.gray { background: var(--gray-mid); }
   .card-stripe.navy { background: var(--navy); }
   .card-body { padding: 1.5rem; }
   .card-date {
@@ -431,7 +455,7 @@ const pathname = Astro.url.pathname;
 
   /* ─── REGISTRATION ─── */
   .registration-section {
-    background: var(--navy);
+    background: var(--gray-bg);
     position: relative;
     overflow: hidden;
   }
@@ -439,21 +463,9 @@ const pathname = Astro.url.pathname;
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(to right, var(--orange) 0%, var(--gray-dark) 50%, var(--orange) 100%);
-    opacity: 0.6;
-  }
-  .registration-section::before {
-    content: 'REGISTER';
-    position: absolute;
-    right: -40px; top: 50%;
-    transform: translateY(-50%) rotate(90deg);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 12rem;
-    color: rgba(255,255,255,0.025);
-    pointer-events: none;
-    white-space: nowrap;
+    height: 3px;
+    background: linear-gradient(to right, var(--orange) 0%, var(--gray-light) 50%, var(--orange) 100%);
+    opacity: 0.5;
   }
   .reg-layout {
     display: grid;
@@ -462,16 +474,17 @@ const pathname = Astro.url.pathname;
     align-items: center;
     margin-top: 3rem;
   }
-  .reg-info p { color: var(--gray-light); font-size: 1rem; line-height: 1.7; margin-top: 1.2rem; }
-  .reg-details { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .reg-info p { color: var(--gray-dark); font-size: 1rem; line-height: 1.7; margin-top: 1.2rem; }
+  .reg-details { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
   .reg-detail-row {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
     padding: 1rem 1.2rem;
-    background: rgba(232, 232, 228, 0.05);
-    border-radius: 6px;
+    background: var(--white);
+    border-radius: 8px;
     border-left: 3px solid var(--orange);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
   }
   .detail-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
   .detail-label {
@@ -483,18 +496,18 @@ const pathname = Astro.url.pathname;
     color: var(--orange);
     margin-bottom: 0.2rem;
   }
-  .detail-value { font-size: 0.95rem; color: var(--gray-light); }
+  .detail-value { font-size: 0.95rem; color: var(--gray-dark); }
   .fee-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(217,95,14,0.12);
-    border: 1px solid rgba(217,95,14,0.4);
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
+    background: var(--orange-warm);
+    border: 1px solid rgba(224, 120, 48, 0.25);
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
     margin-top: 1rem;
     font-size: 0.85rem;
-    color: var(--gray-light);
+    color: var(--gray-dark);
   }
   .fee-badge strong { color: var(--orange); font-size: 1.1rem; }
   .reg-form-card {
@@ -502,7 +515,8 @@ const pathname = Astro.url.pathname;
     border-radius: 12px;
     padding: 2.5rem;
     color: var(--navy);
-    border-top: 5px solid var(--orange);
+    border-top: 4px solid var(--orange);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
   }
   .reg-form-card h3 {
     font-family: 'Barlow Condensed', sans-serif;
@@ -528,18 +542,18 @@ const pathname = Astro.url.pathname;
   .form-field select,
   .form-field textarea {
     background: var(--gray-bg);
-    border: 1.5px solid var(--gray-light);
-    border-radius: 5px;
+    border: 1.5px solid rgba(0,0,0,0.1);
+    border-radius: 6px;
     padding: 0.65rem 0.85rem;
     font-family: 'Barlow', sans-serif;
     font-size: 0.95rem;
     color: var(--navy);
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
     outline: none;
   }
   .form-field input:focus,
   .form-field select:focus,
-  .form-field textarea:focus { border-color: var(--orange); }
+  .form-field textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(224, 120, 48, 0.1); }
   .form-field textarea { resize: vertical; min-height: 80px; }
   .form-submit {
     width: 100%;
@@ -553,15 +567,16 @@ const pathname = Astro.url.pathname;
     text-transform: uppercase;
     padding: 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(224, 120, 48, 0.25);
   }
-  .form-submit:hover { background: var(--orange-light); }
+  .form-submit:hover { background: var(--orange-light); box-shadow: 0 4px 16px rgba(224, 120, 48, 0.3); }
   .hidden-field { display: none; }
 
   /* ─── GALLERY ─── */
-  .gallery-section { background: #0e1f38; }
+  .gallery-section { background: var(--gray-bg); }
   .gallery-header {
     display: flex;
     align-items: flex-end;
@@ -577,12 +592,15 @@ const pathname = Astro.url.pathname;
     gap: 10px;
   }
   .gallery-item {
-    border-radius: 6px;
+    border-radius: 10px;
     overflow: hidden;
-    background: rgba(232, 232, 228, 0.05);
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.06);
     position: relative;
     cursor: pointer;
+    transition: box-shadow 0.2s;
   }
+  .gallery-item:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
   .gallery-item:nth-child(1) { grid-column: 1 / 6; grid-row: 1 / 3; }
   .gallery-item:nth-child(2) { grid-column: 6 / 9; grid-row: 1 / 2; }
   .gallery-item:nth-child(3) { grid-column: 9 / 13; grid-row: 1 / 2; }
@@ -595,21 +613,22 @@ const pathname = Astro.url.pathname;
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    color: rgba(232, 232, 228, 0.2);
+    color: var(--gray-light);
     transition: background 0.2s;
   }
-  .gallery-item:hover .gallery-placeholder { background: rgba(217,95,14,0.09); }
+  .gallery-item:hover .gallery-placeholder { background: var(--orange-warm); }
   .gallery-placeholder .icon { font-size: 2.5rem; }
   .gallery-placeholder .label {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    color: var(--gray-mid);
   }
   .gallery-item-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(10,22,40,0.75) 0%, transparent 50%);
+    background: linear-gradient(to top, rgba(26,35,50,0.75) 0%, transparent 50%);
     opacity: 0;
     transition: opacity 0.2s;
     display: flex;
@@ -627,21 +646,22 @@ const pathname = Astro.url.pathname;
   }
   .gallery-upload {
     margin-top: 2rem;
-    border: 2px dashed rgba(217,95,14,0.35);
-    border-radius: 8px;
+    border: 2px dashed rgba(224,120,48,0.3);
+    border-radius: 10px;
     padding: 2rem;
     text-align: center;
     transition: border-color 0.2s, background 0.2s;
+    background: var(--white);
   }
-  .gallery-upload:hover { border-color: var(--orange); background: rgba(217,95,14,0.04); }
+  .gallery-upload:hover { border-color: var(--orange); background: var(--orange-warm); }
   .gallery-upload p { color: var(--gray-mid); font-size: 0.9rem; }
   .gallery-upload strong { color: var(--orange); }
 
   /* ─── FOOTER ─── */
   footer {
-    background: #060f1c;
+    background: var(--navy);
     padding: 3rem 2.5rem;
-    border-top: 3px solid var(--orange);
+    color: var(--white);
   }
   .footer-inner {
     max-width: 1100px;
@@ -652,21 +672,31 @@ const pathname = Astro.url.pathname;
     gap: 2rem;
     flex-wrap: wrap;
   }
-  .footer-logo {
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .footer-logo-img {
+    height: 50px;
+    width: auto;
+    border-radius: 4px;
+  }
+  .footer-logo-text {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: var(--white);
     letter-spacing: 0.04em;
   }
   .logo-orange { color: var(--orange); }
-  .footer-logo span {
+  .footer-sub {
     color: var(--gray-mid);
     font-weight: 400;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     display: block;
-    letter-spacing: 0.1em;
-    margin-top: 0.2rem;
+    letter-spacing: 0.08em;
+    margin-top: 0.15rem;
     text-transform: uppercase;
   }
   .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
@@ -676,7 +706,7 @@ const pathname = Astro.url.pathname;
     font-size: 0.85rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.5);
     text-decoration: none;
     transition: color 0.2s;
   }
@@ -685,9 +715,9 @@ const pathname = Astro.url.pathname;
     max-width: 1100px;
     margin: 2rem auto 0;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.06);
+    border-top: 1px solid rgba(255,255,255,0.08);
     font-size: 0.8rem;
-    color: rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.3);
     text-align: center;
   }
 
@@ -712,7 +742,7 @@ const pathname = Astro.url.pathname;
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--white);
+    background: var(--navy);
     margin: 5px 0;
     transition: transform 0.3s, opacity 0.3s;
   }
@@ -723,31 +753,35 @@ const pathname = Astro.url.pathname;
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     nav { padding: 0 1.2rem; }
+    .nav-logo-text { font-size: 1.1rem; }
+    .nav-logo-img { height: 36px; }
     .nav-toggle { display: block; }
     .nav-links {
       display: none;
       position: fixed;
-      top: 64px; left: 0; right: 0;
-      background: rgba(10, 22, 40, 0.98);
+      top: 72px; left: 0; right: 0;
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(12px);
       flex-direction: column;
-      padding: 1.5rem 1.5rem 2rem;
+      padding: 1rem 1.5rem 1.5rem;
       gap: 0;
       border-bottom: 3px solid var(--orange);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
     .nav-links.open { display: flex; }
-    .nav-links li { border-bottom: 1px solid rgba(232,232,228,0.08); }
+    .nav-links li { border-bottom: 1px solid rgba(0,0,0,0.06); }
     .nav-links li:last-child { border-bottom: none; margin-top: 0.5rem; }
-    .nav-links a { display: block; padding: 0.85rem 0; font-size: 1.1rem; }
-    .nav-links .nav-cta { text-align: center; padding: 0.75rem 1.2rem; }
+    .nav-links a { display: block; padding: 0.85rem 0; font-size: 1.1rem; color: var(--navy); }
+    .nav-links li:last-child { display: none; }
     .hero { padding: 100px 1.2rem 3rem; }
     .hero-court { display: none; }
-    .hero-stats { gap: 1.5rem; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
     section { padding: 4rem 1.2rem; }
     .reg-layout { grid-template-columns: 1fr; gap: 2.5rem; }
     .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
     .gallery-item { grid-column: auto !important; grid-row: auto !important; height: 160px; }
     footer { padding: 2rem 1.2rem; }
+    .footer-brand { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     .page-header { padding: 100px 1.2rem 3rem; }
     .form-row { grid-template-columns: 1fr; }
   }

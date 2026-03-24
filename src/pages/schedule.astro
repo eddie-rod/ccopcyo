@@ -58,8 +58,8 @@ const schedule = scheduleData.games;
     margin-bottom: 2.5rem;
     padding: 1rem 1.5rem;
     border-left: 3px solid var(--orange);
-    background: rgba(232, 232, 228, 0.04);
-    border-radius: 0 6px 6px 0;
+    background: var(--orange-warm);
+    border-radius: 0 8px 8px 0;
   }
   .schedule-list {
     display: flex;
@@ -71,19 +71,21 @@ const schedule = scheduleData.games;
     grid-template-columns: 160px 110px 1fr 1fr auto;
     gap: 1rem;
     align-items: center;
-    background: rgba(232, 232, 228, 0.05);
+    background: var(--white);
     border-left: 3px solid var(--orange);
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 1rem 1.5rem;
-    transition: background 0.2s;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.05);
   }
-  .schedule-row:hover { background: rgba(232, 232, 228, 0.08); }
+  .schedule-row:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
   .sched-date-main {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--navy);
   }
   .sched-time {
     font-family: 'Barlow Condensed', sans-serif;
@@ -99,11 +101,11 @@ const schedule = scheduleData.games;
     font-size: 0.78rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--gray-light);
-    background: rgba(217,95,14,0.15);
-    border: 1px solid rgba(217,95,14,0.35);
+    color: var(--orange);
+    background: var(--orange-warm);
+    border: 1px solid rgba(224,120,48,0.2);
     padding: 0.25rem 0.6rem;
-    border-radius: 3px;
+    border-radius: 4px;
     text-align: center;
     white-space: nowrap;
   }
@@ -120,7 +122,7 @@ const schedule = scheduleData.games;
     font-weight: 700;
     font-size: 1.1rem;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--navy);
   }
   .schedule-location {
     display: flex;
@@ -128,7 +130,7 @@ const schedule = scheduleData.games;
     gap: 0.4rem;
   }
   .sched-icon { font-size: 0.85rem; flex-shrink: 0; }
-  .sched-loc { font-size: 0.88rem; color: var(--gray-light); line-height: 1.4; }
+  .sched-loc { font-size: 0.88rem; color: var(--gray-mid); line-height: 1.4; }
   .schedule-result {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 900;
@@ -138,14 +140,16 @@ const schedule = scheduleData.games;
     border-radius: 4px;
     white-space: nowrap;
   }
-  .schedule-result.win { background: rgba(34,197,94,0.15); color: #4ade80; }
-  .schedule-result.loss { background: rgba(239,68,68,0.15); color: #f87171; }
+  .schedule-result.win { background: rgba(34,197,94,0.1); color: #16a34a; }
+  .schedule-result.loss { background: rgba(239,68,68,0.1); color: #dc2626; }
   .schedule-empty {
     text-align: center;
     padding: 4rem 2rem;
     color: var(--gray-mid);
     font-size: 1rem;
   }
+
+  section { background: var(--gray-bg); }
 
   @media (max-width: 768px) {
     .schedule-row {
