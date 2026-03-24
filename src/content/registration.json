@@ -1,0 +1,33 @@
+{
+  "earlyBirdFee": "$350",
+  "regularFee": "$375",
+  "earlyBirdDeadline": "July 15",
+  "eligibility": "Open to boys and girls in grades 3–8 living in Pleasanton or Sunol. No prior experience needed — players of all skill levels are welcome!",
+  "details": [
+    {
+      "icon": "📅",
+      "label": "Key Dates",
+      "value": "Evaluations: mid-September · Practices: October · Games: Late Oct – mid-Feb"
+    },
+    {
+      "icon": "🏀",
+      "label": "Practice & Games",
+      "value": "2 practices/week · Games on Sunday afternoons throughout the Tri-Valley area"
+    },
+    {
+      "icon": "📍",
+      "label": "Locations",
+      "value": "St. Elizabeth's Gym + Pleasanton middle school gyms · Pleasanton, Danville, Dublin, San Ramon, Livermore"
+    },
+    {
+      "icon": "⛪",
+      "label": "Open to All",
+      "value": "All faiths and beliefs welcome — no Catholic affiliation required"
+    },
+    {
+      "icon": "👕",
+      "label": "What's Included",
+      "value": "Jersey, shorts, and socks provided · Bring your own basketball shoes"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import faqsData from '../content/faqs.json';
+
+const faqs = faqsData.items;
+const categories = [...new Set(faqs.map(f => f.category))];
+---
+
+<Layout title="FAQs | CCOP CYO Basketball">
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="section-label">Questions & Answers</div>
+      <h1 class="page-title">Frequently Asked<br/><span style="color: var(--orange);">Questions</span></h1>
+    </div>
+  </div>
+
+  <section class="faq-section">
+    <div class="section-inner">
+      {categories.map((category) => (
+        <div class="faq-category fade-in">
+          <h2 class="faq-category-title">{category}</h2>
+          <div class="faq-list">
+            {faqs.filter(f => f.category === category).map((faq) => (
+              <details class="faq-item">
+                <summary class="faq-question">{faq.question}</summary>
+                <p class="faq-answer">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .faq-section {
+    background: var(--gray-bg);
+    padding: 4rem 2.5rem 6rem;
+  }
+  .faq-category {
+    margin-bottom: 3rem;
+  }
+  .faq-category:last-child {
+    margin-bottom: 0;
+  }
+  .faq-category-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--orange);
+    display: inline-block;
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .faq-item {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(10, 22, 40, 0.06);
+    transition: box-shadow 0.2s;
+  }
+  .faq-item[open] {
+    box-shadow: 0 4px 20px rgba(10, 22, 40, 0.1);
+  }
+  .faq-question {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--navy);
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    transition: color 0.2s;
+  }
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+  .faq-question::after {
+    content: '+';
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--orange);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  .faq-item[open] .faq-question::after {
+    content: '−';
+  }
+  .faq-question:hover {
+    color: var(--orange);
+  }
+  .faq-answer {
+    padding: 0 1.5rem 1.2rem;
+    font-size: 0.95rem;
+    color: var(--gray-dark);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .faq-section { padding: 3rem 1.2rem 4rem; }
+  }
+</style>

@@ -59,3 +59,62 @@ collections:
               - { name: opponent, label: Opponent, widget: string }
               - { name: location, label: Location, widget: string, hint: "e.g. St. Elizabeth's Gym" }
               - { name: result, label: Result, widget: string, required: false, hint: "e.g. W 24-18 or L 20-24 (leave blank for upcoming games)" }
+
+      - name: "faqs"
+        label: "FAQs"
+        file: "src/content/faqs.json"
+        format: "json"
+        fields:
+          - name: items
+            label: FAQs
+            label_singular: FAQ
+            widget: list
+            summary: "{{fields.category}} — {{fields.question}}"
+            fields:
+              - { name: question, label: Question, widget: string }
+              - { name: answer, label: Answer, widget: text }
+              - name: category
+                label: Category
+                widget: select
+                options:
+                  - "General"
+                  - "Registration"
+                  - "Season & Schedule"
+                  - "Players"
+                  - "Coaching"
+                  - "Referees"
+
+      - name: "registration"
+        label: "Registration Info"
+        file: "src/content/registration.json"
+        format: "json"
+        fields:
+          - { name: earlyBirdFee, label: Early Bird Fee, widget: string, hint: "e.g. $350" }
+          - { name: regularFee, label: Regular Fee, widget: string, hint: "e.g. $375" }
+          - { name: earlyBirdDeadline, label: Early Bird Deadline, widget: string, hint: "e.g. July 15" }
+          - { name: eligibility, label: Eligibility Description, widget: text }
+          - name: details
+            label: Program Details
+            label_singular: Detail
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - { name: icon, label: Icon (emoji), widget: string, hint: "e.g. 📅 🏀 📍 ⛪ 👕" }
+              - { name: label, label: Label, widget: string }
+              - { name: value, label: Description, widget: string }
+
+      - name: "contact"
+        label: "Contact Info"
+        file: "src/content/contact.json"
+        format: "json"
+        fields:
+          - name: details
+            label: Contact Details
+            label_singular: Detail
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - { name: icon, label: Icon (emoji), widget: string, hint: "e.g. ✉️ ⛪ 🏀 🎽" }
+              - { name: label, label: Label, widget: string }
+              - { name: value, label: Value, widget: string }
+              - { name: isEmail, label: Is this an email address?, widget: boolean, default: false }

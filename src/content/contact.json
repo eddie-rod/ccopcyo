@@ -1,0 +1,28 @@
+{
+  "details": [
+    {
+      "icon": "✉️",
+      "label": "Email",
+      "value": "basketball@ccopcyo.org",
+      "isEmail": true
+    },
+    {
+      "icon": "⛪",
+      "label": "Church",
+      "value": "Catholic Community of Pleasanton — 3850 Bernal Ave, Pleasanton, CA 94566",
+      "isEmail": false
+    },
+    {
+      "icon": "🏀",
+      "label": "Practice / Game Venues",
+      "value": "St. Elizabeth's Gym · Pleasanton Middle School Gyms · Wells Middle School",
+      "isEmail": false
+    },
+    {
+      "icon": "🎽",
+      "label": "Referee Program",
+      "value": "High school students (9th–12th grade) can apply to officiate games and earn a stipend. Email us to express interest.",
+      "isEmail": false
+    }
+  ]
+}
