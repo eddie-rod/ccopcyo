@@ -56,11 +56,18 @@ const pathname = Astro.url.pathname;
   </footer>
 
   <script>
-    // Netlify Identity redirect after login
+    // Netlify Identity — handle invite/recovery tokens and redirect after login
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on('init', (user) => {
-        if (!user) { window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; }); }
+        if (!user) {
+          window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
+        }
       });
+      // If URL has an invite or recovery token, open the Identity modal
+      const hash = window.location.hash;
+      if (hash.includes('invite_token=') || hash.includes('recovery_token=') || hash.includes('confirmation_token=')) {
+        window.netlifyIdentity.open();
+      }
     }
 
     // Mobile menu toggle
