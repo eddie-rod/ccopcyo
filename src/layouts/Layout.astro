@@ -56,7 +56,9 @@ const pathname = Astro.url.pathname;
   </footer>
 
   <script is:inline>
-    // Netlify Identity — handle invite/recovery tokens and redirect after login
+    // Netlify Identity — redirect to /admin after login
+    // The widget auto-detects invite/recovery/confirmation tokens in the URL hash
+    // and opens the appropriate modal on its own — no manual open() needed.
     function initIdentity() {
       var identity = window.netlifyIdentity;
       if (!identity) return;
@@ -66,15 +68,8 @@ const pathname = Astro.url.pathname;
           identity.on('login', function() { document.location.href = '/admin/'; });
         }
       });
-
-      // If URL has an invite or recovery token, open the Identity modal
-      var hash = window.location.hash;
-      if (hash.includes('invite_token=') || hash.includes('recovery_token=') || hash.includes('confirmation_token=')) {
-        identity.open();
-      }
     }
 
-    // Wait for Identity widget to load, then initialize
     if (window.netlifyIdentity) {
       initIdentity();
     } else {
@@ -124,11 +119,8 @@ const pathname = Astro.url.pathname;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  /* Ensure Netlify Identity widget modal renders above all site elements */
-  .netlify-identity-widget,
-  .netlify-identity-menu,
-  [class*="netlify-identity"],
-  .nf-modal { z-index: 9999 !important; position: relative; }
+  /* Ensure Netlify Identity widget iframe renders above all site elements */
+  #netlify-identity-widget { z-index: 9999 !important; }
   html { scroll-behavior: smooth; }
   body {
     font-family: 'Barlow', sans-serif;
