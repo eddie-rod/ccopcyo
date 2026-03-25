@@ -201,9 +201,8 @@ const pathname = Astro.url.pathname;
   .hero {
     min-height: 90vh;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
     padding: 120px 2.5rem 4rem;
     position: relative;
     overflow: hidden;
@@ -217,29 +216,36 @@ const pathname = Astro.url.pathname;
       radial-gradient(ellipse 50% 60% at 85% 50%, rgba(224, 120, 48, 0.06) 0%, transparent 60%),
       radial-gradient(ellipse 40% 50% at 10% 80%, rgba(26, 35, 50, 0.03) 0%, transparent 55%);
   }
-  .hero-court {
-    position: absolute;
-    right: -40px; top: 50%;
-    transform: translateY(-50%);
-    width: 480px; height: 480px;
-    border: 2px solid rgba(224, 120, 48, 0.12);
-    border-radius: 50%;
-    pointer-events: none;
+  .hero-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
   }
-  .hero-court::before {
-    content: '';
-    position: absolute;
-    inset: 40px;
-    border: 2px solid rgba(224, 120, 48, 0.07);
-    border-radius: 50%;
+  .hero-text {
+    flex: 1;
+    min-width: 0;
   }
-  .hero-court::after {
-    content: '';
-    position: absolute;
-    top: 50%; left: -80px; right: -80px;
-    height: 2px;
-    background: rgba(224, 120, 48, 0.07);
-    transform: translateY(-50%);
+  .hero-image {
+    flex: 0 0 auto;
+    width: 340px;
+    height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: floatBall 4s ease-in-out infinite;
+  }
+  .basketball-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 20px 40px rgba(224, 120, 48, 0.25));
+  }
+  @keyframes floatBall {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-16px); }
   }
   .hero-tag {
     font-family: 'Barlow Condensed', sans-serif;
@@ -774,7 +780,8 @@ const pathname = Astro.url.pathname;
     .nav-links a { display: block; padding: 0.85rem 0; font-size: 1.1rem; color: var(--navy); }
     .nav-links li:last-child { display: none; }
     .hero { padding: 100px 1.2rem 3rem; }
-    .hero-court { display: none; }
+    .hero-content { flex-direction: column; gap: 2rem; }
+    .hero-image { width: 220px; height: 220px; order: -1; }
     .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
     section { padding: 4rem 1.2rem; }
     .reg-layout { grid-template-columns: 1fr; gap: 2.5rem; }
